@@ -15,7 +15,15 @@ Input product info + target audience → generate scripts, storyboards, captions
 - **GPU compute**: video generation/rendering & inference acceleration (as needed)
 
 ## Architecture (draft)
-```mermaid
+flowchart LR
+U[Business User] --> W[Web App]
+W --> API[Backend API - App Service]
+API --> AOAI[Azure OpenAI]
+API --> ST[Azure Storage]
+API --> Q[Jobs and Workers]
+Q --> GPU[GPU Compute]
+GPU --> ST
+ST --> W
 flowchart LR
 U[Business User] --> W[Web App]
 W --> API[Backend API (App Service)]
